@@ -25,7 +25,7 @@
           <table border="0">
             <tr>
               <td width="50%"><button type="button" class="btn btn-primary" id="btnPagoEnergia">Energía eléctrica</button></td>
-              <td width="50%"><button type="button" class="btn btn-primary" id="btnRetirar">Internet</button></td>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnPagoInternet">Internet</button></td>
             </tr>
             <tr>
               <td>.</td>
@@ -66,6 +66,11 @@
 
         document.getElementById("btnPagoEnergia").addEventListener("click", function () {
           window.location.href = "servicios/pagoEnergia.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+
+        document.getElementById("btnPagoInternet").addEventListener("click", function () {
+          window.location.href = "servicios/pagoInternet.html"; //redirige a la página de depósito
           //código de JavaScript a ejecutar cuando se abra la página web seleccionada
         });
 
