@@ -1,0 +1,61 @@
+/*boton agregar */
+.button {
+  background-color: blue;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  padding: 16px 50px;
+  text-align: center;
+  font-size: 16px;
+  border: 2px solid black;
+}
+
+.button:hover {
+  background-color: yellow; /*color de fondo cuando se pasa el mouse en el botón*/
+  color: blue; /*color de texto cuando se pasa el mouse en el botón*/
+}
+
+body {
+  display: flex; /*modelo de diseño flexible (Flexbox)*/
+  align-items: center; /*aplica al contenedor flex <body>, alinea verticalmente los elementos secundarios (elementos dentro del <body>) en el centro del contenedor*/
+  justify-content: center; /*aplica al contenedor flex <body>, alinea horizontalmente los elementos secundarios (elementos dentro del <body>) en el centro del contenedor*/
+  height: 100vh; /*altura del <body> al 100% del viewport height (altura de la ventana del navegador), el <body> ocupará toda la altura visible de la ventana del navegador*/
+  font-family: Arial, Helvetica, sans-serif; /*establece la fuente para texto dentro del <body>. Si el navegador no encuentra la fuente Arial, utilizará Helvetica como alternativa, si no la fuente genérica sans-serif*/
+  background: linear-gradient(27deg, #FF0000 0%, #FFFFFF 100%); /*fondo degradado para el <body> por función linear-gradient(). El degradado es de color rojo en un ángulo de 27 grados para el 0% del área, y cambia a color blanco para el 100% del área*/
+}
+
+.text {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+div#img {
+  position: absolute;
+  top: 7em;
+  left: 40vw;
+  width: 6vw;
+}
+
+div#int1 {
+  position: absolute;
+  top: 18em;
+  left: 5vw;
+  width: 1vw;
+}
+
+div#lab1 {
+  position: absolute;
+  top: 13em;
+  left: 4vw;
+  width: 1vw;
+}
+
+div#p1 {
+  position: absolute;
+  top: 11em; /*11 veces el tamaño de la fuente actual desde la parte superior*/
+  left: 2vw; /*6% del ancho de la ventana del navegador desde el borde izquierdo*/
+  width: 100vw; /*ancho del elemento será el 1% del ancho de la ventana del navegador*/
+}

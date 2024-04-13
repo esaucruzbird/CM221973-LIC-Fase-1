@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link href="estiloGrafico.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="img">
+        <img src="../img/imagenMenu.png" height="90px" width="180px" />
+      </div>
+      <div id="encabezado">
+        <p class="text">Bienvenido!!! Ash Ketchum</p>
+        <p class="text" id="saldo-encabezado"></p>
+        <p class="text"><u>(A continuación, se muestra el gráfico de barra del conteo)</u></p>
+      </div>
+      <br /><br /><br />
+      <div class="container">
+        <!--div contenedor donde se insertará la tabla de transacciones generada dinámicamente con el JS -->
+        <!--buscará este elemento en el DOM y lo actualizará con la tabla de transacciones generada por el JS.-->
+        <!--<div id="tabla-transacciones" class="table"></div>-->
+        <br /><br /><br /><br /><br /><br />
+
+        <div id="graficoContainer">
+          <canvas id="graficoBarras"></canvas>
+        </div>
+        <!--
+        <div width="100" height="50">
+        <canvas id="graficoBarras"></canvas>
+        </div>
+        -->
+        <br /><br />
+        <center>
+          <table border="0">
+            <tr>
+              <td width="50%"><button type="button" class="btn btn-dark" id="btnRegresar">Regresar menú</button></td>
+              <td width="50%"><button type="button" class="btn btn-dark" id="btnCerrar">Cerrar</button></td>
+            </tr>
+          </table>
+        </center>
+      </div>
+
+      <!-- Scripts para redireccionar y activar archivos JS -->
+      <script>
+        //INICIO función realizarDeposito
+
+        // Obtener el saldo actual del localStorage
+        var saldoActual = parseFloat(localStorage.getItem('saldo'));
+        //asignación del saldo al encabezado
+        document.getElementById('saldo-encabezado').innerHTML = 'El N° cuenta es 0987654321, el saldo actual es $ ' + saldoActual;
+
+        //INICIO lógica gráfico
+        // Obtener el historial de transacciones del localStorage
+        var historial = JSON.parse(localStorage.getItem('historial')) || [];
+
+        // Contadores para cada categoría
+        var depositos = 0;
+        var retiros = 0;
+        var pagos = 0;
+
+        // Iterar sobre cada transacción y contar las transacciones de cada categoría
+        historial.forEach(function (transaccion) {
+          var concepto = transaccion.concepto;
+          if (concepto === 'depósito') {
+            depositos++;
+          } else if (concepto === 'retiro') {
+            retiros++;
+          } else {
+            pagos++;
+          }
+        });
+
+        // Preparar los datos para el gráfico de Chart.js
+        var etiquetas = ['Depósitos', 'Retiros', 'Pagos'];
+        var datos = [depositos, retiros, pagos];
+
+        // Crear el gráfico de barras con Chart.js
+        var ctx = document.getElementById('graficoBarras').getContext('2d');
+        var graficoBarras = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: etiquetas,
+            datasets: [
+              {
+                label: 'Cantidad de Transacciones',
+                data: datos,
+                backgroundColor: [
+                  'rgba(0, 128, 0, 0.6)', // Color de las barras para depósitos
+                  'rgba(255, 165, 0, 0.6)', // Color de las barras para retiros
+                  'rgba(50, 50, 50, 0.6)', // Color de las barras para pagos
+                ],
+                borderColor: [
+                  'rgba(0, 128, 0, 0.6)', // Color del borde de las barras para depósitos
+                  'rgba(255, 165, 0, 0.6)', // Color del borde de las barras para retiros
+                  'rgba(50, 50, 50, 0.6)', // Color del borde de las barras para pagos
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            // Escalar el gráfico para que se ajuste al contenedor
+            scales: {
+              y: {
+                beginAtZero: true, // Empezar el eje Y desde cero
+              },
+            },
+            // Controlar el tamaño del gráfico
+            maintainAspectRatio: false,
+            responsive: true,
+            aspectRatio: 1, // Proporción 1:1
+            plugins: {
+              legend: {
+                display: false, // Ocultar la leyenda
+              },
+            },
+          },
+        });
+        //FIN lógica gráfico
+
+        //INICIO Lógica para llamamiento de los botones
+        document.getElementById('btnRegresar').addEventListener('click', function () {
+          window.location.href = '../menu.html'; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+        document.getElementById('btnCerrar').addEventListener('click', function () {
+          window.location.href = '../../index.html'; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+        //FIN Lógica para llamamiento de los botones
+      </script>
+    </div>
+  </body>
+</html>

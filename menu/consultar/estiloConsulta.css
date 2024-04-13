@@ -1,0 +1,47 @@
+/*estilo de todo el cuerpo de la pantalla, buscando estándarizar el diseño*/
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(27deg, #ffffff 0%, #ff0000 100%);
+}
+
+/*formato para la imagen*/
+div#img {
+  position: absolute;
+  top: 4em;
+  left: 5vw;
+  width: 6vw;
+}
+
+/*posición del encabezado*/
+div#encabezado {
+  position: absolute;
+  top: 2em;
+  left: 25vw;
+  width: 53vw;
+  font-size: 6mm;
+}
+
+/*color y alineación del encabezado*/
+.text {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+/*agregando efecto al botón de boostrap*/
+.btn.btn-primary:hover {
+  background-color: yellow; /* Cambia el color de fondo en el hover */
+  border-color: blue; /* Cambia el color del borde en el hover */
+  color: blue; /* Cambia el color del texto en el hover */
+}
+
+.textoConsulta {
+  text-align: center; /* Centra el texto horizontalmente */
+  color: white; /* Cambia el color del texto a blanco */
+}

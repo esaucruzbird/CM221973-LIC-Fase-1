@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Menu</title>
+    <link href="estiloHistorial.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css"> <!-- CSS de DataTables -->
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- JavaScript de jQuery -->
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script> <!-- JavaScript de DataTables -->
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="img">
+        <img src="../img/imagenMenu.png" height="90px" width="180px" />
+      </div>
+      <div id="encabezado">
+        <p class="text">Bienvenido!!! Ash Ketchum</p>
+        <p class="text" id="saldo-encabezado"></p>
+        <p class="text"><u>(Se muestra el historial de transacciones de su cuenta)</u></p>
+      </div>
+      <br><br><br><br><br><br><br><br><br><br>
+      <div class="container">
+
+        <!--div contenedor donde se insertará la tabla de transacciones generada dinámicamente con el JS -->
+        <!--buscará este elemento en el DOM y lo actualizará con la tabla de transacciones generada por el JS.-->
+        <div id="tabla-transacciones" class="table"></div>
+
+        <center>
+          <table border="0">
+            <tr>
+              <td width="50%"><button type="button" class="btn btn-dark" id="btnRegresar">Regresar menú</button></td>
+              <td width="50%"><button type="button" class="btn btn-dark" id="btnCerrar">Cerrar</button></td>
+            </tr>
+          </table>
+        </center>
+      </div>
+
+      <!-- Scripts para redireccionar y activar archivos JS -->
+      <script>
+        //INICIO lógica para preparar tabla que se pasará al HTML
+
+        // Obtener el historial de transacciones del localStorage
+        var historial = JSON.parse(localStorage.getItem("historial")) || []; //revisa si existe, sino devuelve corchetes vacios
+        // Construir la tabla de transacciones
+        //var tablaHTML = "<table><tr><th>Concepto</th><th>Fecha</th><th>Valor</th></tr>";
+        var tablaHTML = "<table id='miTabla' class='table table-striped'><thead><tr><th>Concepto</th><th>Fecha</th><th>Valor</th></tr></thead><tbody>";
+        historial.forEach(function(transaccion) {
+          tablaHTML += "<tr><td>" + transaccion.concepto + "</td><td>" + transaccion.fecha + "</td><td>" + transaccion.valor + "</td></tr>";
+        });
+        tablaHTML += "</tbody></table>";
+        // Insertar la tabla en el documento HTML
+        document.getElementById("tabla-transacciones").innerHTML = tablaHTML;
+
+        //FIN lógica para preparar tabla que se pasará al HTML
+
+        $(document).ready( function () {
+          $('#miTabla').DataTable({
+            "pageLength": 3, //mostrar solo 3 filas por página
+            "searching": false, //deshabilitar la opción de búsqueda
+            "lengthChange": false, //deshabilitar la opción de cambio de longitud (show entries)
+            "info": false //deshabilitar la información de entradas y filas mostradas abajo de la tabla, como labels
+          });
+        });
+
+
+        // Obtener el saldo actual del localStorage
+        var saldoActual = parseFloat(localStorage.getItem("saldo"));
+        //asignación del saldo al encabezado
+        document.getElementById("saldo-encabezado").innerHTML = "El N° cuenta es 0987654321, el saldo actual es $ "+saldoActual;
+
+        //INICIO Lógica para llamamiento de los botones
+        document.getElementById('btnRegresar').addEventListener('click', function () {
+          window.location.href = '../menu.html'; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+        document.getElementById('btnCerrar').addEventListener('click', function () {
+          window.location.href = '../../index.html'; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+        //FIN Lógica para llamamiento de los botones
+      </script>
+    </div>
+  </body>
+</html>

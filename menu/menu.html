@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link href="estiloMenu.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="img">
+        <img src="img/imagenMenu.png" height="90px" width="160px" />
+      </div>
+      <div id="pp">
+        <p class="text">Bienvenido!!! Ash Ketchum</p>
+        <p class="text" id="saldo-encabezado"></p>
+        <p class="text">Seleccionar la operacion a realizar:</p>
+      </div>
+
+      <div class="container">
+        <br /><br /><br /><br />
+        <center>
+          <table border="0">
+            <tr>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnDepositar">Depositar</button></td>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnRetirar">Retirar</button></td>
+            </tr>
+            <tr>
+              <td>.</td>
+            </tr>
+            <tr>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnConsultar">Consultar</button></td>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnPagar">Pagar</button></td>
+            </tr>
+            <tr>
+              <td>.</td>
+            </tr>
+            <tr>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnHistorial">Historial</button></td>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnGrafico">Gráfico</button></td>
+            </tr>
+            <tr>
+              <td>.</td>
+            </tr>
+            <td width="50%"><button type="button" class="btn btn-dark" id="btnCerrar">Cerrar</button></td>
+          </table>
+        </center>
+      </div>
+
+      <!-- Scripts para redireccionar y activar archivos JS -->
+      <script>
+        // Función para inicializar los datos del cliente en localStorage
+        if (!localStorage.getItem("saldo")) { //valida si la clave saldo existe, si existe no hace nada, PERO si NO existe la crea
+          localStorage.setItem("saldo", "500");
+        }
+
+        var historial = JSON.parse(localStorage.getItem('historial'));
+        if (!historial) {
+          historial = []; // Si la clave "historial" no existe, se crea un array vacío
+        }
+
+        // Obtener el saldo actual del localStorage
+        var saldoActual = parseFloat(localStorage.getItem("saldo"));
+        //asignación del saldo al encabezado
+        document.getElementById("saldo-encabezado").innerHTML = "El N° cuenta es 0987654321, el saldo actual es $ "+saldoActual;
+
+        //INICIO Lógica para llamamiento de los botones
+
+        document.getElementById("btnDepositar").addEventListener("click", function () {
+          window.location.href = "depositar/deposito.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+
+        document.getElementById("btnRetirar").addEventListener("click", function () {
+          window.location.href = "retirar/retiro.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+
+        document.getElementById("btnConsultar").addEventListener("click", function () {
+          window.location.href = "consultar/consulta.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+
+        document.getElementById("btnPagar").addEventListener("click", function () {
+          window.location.href = "pagar/pago.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+
+        document.getElementById("btnHistorial").addEventListener("click", function () {
+          window.location.href = "historial/historial.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+
+        document.getElementById("btnGrafico").addEventListener("click", function () {
+          window.location.href = "graficar/grafico.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+
+        document.getElementById("btnCerrar").addEventListener("click", function () {
+          window.location.href = "../index.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+        //FIN Lógica para llamamiento de los botones
+      </script>
+
+      <!--
+      <div id="deposito">
+        <a href="C:\fase1\depositar/deposito.html">
+          <br />
+          <br />
+          <input class="button" type="submit" value="Depositar" class="boton agregar" />
+        </a>
+      </div>
+      <div id="retiro">
+        <a href="C:\fase1\retiro/retiro.html">
+          <br />
+          <br />
+          <input class="button button1" type="submit" value="Retiro" class="boton agregar" />
+        </a>
+      </div>
+      <div id="consulta">
+        <a href="consultar/consulta.html">
+          <br />
+          <input class="button button1" type="submit" value="Consulta de saldo" class="boton agregar" />
+        </a>
+      </div>
+      <div id="pago">
+        <a href="C:\fase1\pago/pago.html">
+          <br />
+          <input class="button button1" type="submit" value="Pago de servicio" class="boton agregar" />
+        </a>
+      </div>
+      <div id="cerrar">
+        <a href="C:\fase1\index.html">
+          <br />
+          <input class="button button1" type="submit" value="cerrar sesion" class="boton agregar" />
+        </a>
+      </div>
+      <div id="historial">
+        <a href="C:\fase1\historial\historial.html">
+          <br />
+          <input class="button button1" type="submit" value="Historial de transacciones" class="boton agregar" />
+        </a>
+      </div>
+      -->
+    </div>
+  </body>
+</html>

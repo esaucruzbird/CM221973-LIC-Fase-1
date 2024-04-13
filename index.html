@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CM221973 LIC Fase 1</title>
+    <link href="estilo.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container-fluid"> <!--crea contenedor que ocupa el ancho completo del viewport, ocupa todo el ancho disponible en la ventana del navegador.-->
+      <div id="img">
+        <!--ALT texto alternativo, describe el contenido o la función de la imagen en caso de que la imagen no se pueda cargar correctamente o no esté disponible para el usuario-->
+        <img src="img/imagenLogin.png" alt="user-login" />
+        <div id="p1"> <!--El id p1 se usa para llamar el formato que está en el CSS-->
+          <p1 class="text">Benvenido Ash Ketchum</p1>
+        </div>
+        <form method="post" action="menu/menu.html" id="frm">
+          <div id="lab1">
+            <br>
+            <!-- <label for="contrasena"><b>Contraseña: </b></label> -->
+            <input
+              type="password"
+              name="contrasena"
+              id="contrasena"
+              value=""
+              placeholder="Pin"
+              minlength="4"
+              maxlength="4"
+              required
+            />
+          </div>
+          <div id="int1">
+            <input class="button" type="submit" value="Ingresar" class="boton agregar" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

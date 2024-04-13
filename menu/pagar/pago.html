@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link href="estiloPago.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="img">
+        <img src="../img/imagenMenu.png" height="90px" width="160px" />
+      </div>
+      <div id="pp">
+        <p class="text">Bienvenido!!! Ash Ketchum</p>
+        <p class="text" id="saldo-encabezado"></p>
+        <p class="text">Seleccionar el tipo de recibo a pagar:</p>
+      </div>
+
+      <div class="container">
+        <br /><br /><br /><br />
+        <center>
+          <table border="0">
+            <tr>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnPagoEnergia">Energía eléctrica</button></td>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnRetirar">Internet</button></td>
+            </tr>
+            <tr>
+              <td>.</td>
+            </tr>
+            <tr>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnConsultar">Agua potable</button></td>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnPagar">Telefonía</button></td>
+            </tr>
+            <tr>
+              <td>.</td>
+            </tr>
+            <tr>
+              <td width="50%"><button type="button" class="btn btn-dark" id="btnRegresar">Regresar menú</button></td>
+              <td width="50%"><button type="button" class="btn btn-dark" id="btnCerrar">Cerrar</button></td>
+            </tr>
+          </table>
+        </center>
+      </div>
+
+      <!-- Scripts para redireccionar y activar archivos JS -->
+      <script>
+        // Función para inicializar los datos del cliente en localStorage
+        //if (!localStorage.getItem("saldo")) { //valida si la clave saldo existe, si existe no hace nada, PERO si NO existe la crea
+        //  localStorage.setItem("saldo", "500");
+        //}
+
+        //var historial = JSON.parse(localStorage.getItem('historial'));
+        //if (!historial) {
+        //  historial = []; // Si la clave "historial" no existe, se crea un array vacío
+        //}
+
+        // Obtener el saldo actual del localStorage
+        var saldoActual = parseFloat(localStorage.getItem("saldo"));
+        //asignación del saldo al encabezado
+        document.getElementById("saldo-encabezado").innerHTML = "El N° cuenta es 0987654321, el saldo actual es $ "+saldoActual;
+
+        //INICIO Lógica para llamamiento de los botones
+
+        document.getElementById("btnPagoEnergia").addEventListener("click", function () {
+          window.location.href = "servicios/pagoEnergia.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+
+        document.getElementById("btnRegresar").addEventListener("click", function () {
+          window.location.href = "../menu.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+
+        document.getElementById("btnCerrar").addEventListener("click", function () {
+          window.location.href = "../../index.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+        //FIN Lógica para llamamiento de los botones
+      </script>
+    </div>
+  </body>
+</html>
