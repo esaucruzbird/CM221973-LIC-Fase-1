@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Menu</title>
+    <link href="../estiloPago.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="img">
+        <img src="../../img/imagenMenu.png" height="90px" width="180px" />
+      </div>
+      <div id="encabezado">
+        <p class="text">Bienvenido!!! Ash Ketchum</p>
+        <p class="text" id="saldo-encabezado"></p>
+        <p class="text"><u>(Ingrese el NPE del recibo y el monto a pagar)</u></p>
+      </div>
+      <br><br><br>
+      <div class="container">
+        <center>
+            <input type="text" id="npeAgua" name="npeAgua" maxlength="24" placeholder="____ ____ ____ ____ ____ ____"/>
+            <input type="number" id="pagoAgua" name="pagoAgua" placeholder="Monto" min="1"/>
+            <button class="btn btn-primary" onclick="realizarPagoAgua()">Pagar</button>
+        </center>
+
+        <br><br>
+        <center>
+          <table border="0">
+            <tr>
+              <td width="50%"><button type="button" class="btn btn-dark" id="btnRegresar">Regresar menú</button></td>
+              <td width="50%"><button type="button" class="btn btn-dark" id="btnCerrar">Cerrar</button></td>
+            </tr>
+          </table>
+        </center>
+      </div>
+
+      <!-- Scripts para redireccionar y activar archivos JS -->
+      <script>
+        //INICIO función realizarPagoAgua
+        function realizarPagoAgua() {
+          // Obtener la cantidad a pagar desde el input
+          var cantidad = parseFloat(document.getElementById("pagoAgua").value);
+          // Validar que la cantidad sea un número válido
+          if (isNaN(cantidad) || cantidad <= 0) {
+            alert("Por favor ingresa una cantidad válida."); //alerta que se lanza si en el campo está vacio, cero o negativo
+            return;
+          }
+          // Obtener el saldo actual del localStorage y restarle la cantidad a pagar
+          var saldoActual = parseFloat(localStorage.getItem("saldo"));
+          var nuevoSaldo = saldoActual - cantidad;
+          // Actualizar el saldo en el localStorage
+          localStorage.setItem("saldo", nuevoSaldo.toString());
+          // Mostrar un mensaje de confirmación
+          alert("Se ha pagado $" + cantidad + " . Nuevo saldo: $" + nuevoSaldo + " .");
+          //Almacenando transacción en el historial
+          var nuevaTransaccion = {
+            concepto: "Pago energía NPE " + document.getElementById("npeAgua").value,
+            fecha: obtenerFechaActual(), // Función para obtener la fecha actual
+            valor: cantidad
+          };
+          var historial = JSON.parse(localStorage.getItem("historial")) || [];
+          historial.push(nuevaTransaccion);
+          localStorage.setItem("historial", JSON.stringify(historial));
+
+          //PARA QUE SE ACTUALICE EL SALDO EN EL ENCABEZADO AL HACER LA TRANSACCIÓN
+          // Obtener el saldo actual del localStorage
+          var saldoActual = parseFloat(localStorage.getItem("saldo"));
+          //asignación del saldo al encabezado
+          document.getElementById("saldo-encabezado").innerHTML = "El N° cuenta es 0987654321, el saldo actual es $ "+saldoActual;
+          // Borrando contenido de la transacción anterior en los input
+          document.getElementById("npeAgua").value = "";
+          document.getElementById("pagoAgua").value = "";
+        }
+        //FIN función realizarPagoAgua
+
+        function obtenerFechaActual() {
+            var fecha = new Date();
+            var dia = fecha.getDate();
+            var mes = fecha.getMonth() + 1; // Se agrega 1 porque los meses comienzan desde 0
+            var año = fecha.getFullYear();
+            // Formatear la fecha en el formato dd-mm-yyyy
+            return (dia < 10 ? '0' : '') + dia + '-' + (mes < 10 ? '0' : '') + mes + '-' + año;
+        }
+
+        //INICIO lógica de mascara de NPE
+        //obtener el elemento de entrada
+        var input = document.getElementById("npeAgua");
+        //agregar un evento input para aplicar la máscara
+        input.addEventListener("input", function() {
+            //obtener el valor actual del input
+            var valor = input.value;
+            //remover todos los espacios en blanco del valor
+            valor = valor.replace(/\s/g, "");
+            //aplicar la máscara de grupos de 4 dígitos
+            var valorFormateado = valor.replace(/(.{4})/g, "$1 ").trim();
+            //actualizar el valor del input con la máscara aplicada
+            input.value = valorFormateado;
+        });
+        //FIN lógica de mascara de NPE
+
+
+        //PARA QUE ESTÉ EN EL ENCABEZADO DESDE QUE SE CARGA LA PÁGINA
+        // Obtener el saldo actual del localStorage
+        var saldoActual = parseFloat(localStorage.getItem("saldo"));
+        //asignación del saldo al encabezado
+        document.getElementById("saldo-encabezado").innerHTML = "El N° cuenta es 0987654321, el saldo actual es $ "+saldoActual;
+
+        //INICIO Lógica para llamamiento de los botones
+        document.getElementById('btnRegresar').addEventListener('click', function () {
+          window.location.href = '../../menu.html'; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+        document.getElementById('btnCerrar').addEventListener('click', function () {
+          window.location.href = '../../../index.html'; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+        //FIN Lógica para llamamiento de los botones
+      </script>
+    </div>
+  </body>
+</html>

@@ -31,7 +31,7 @@
               <td>.</td>
             </tr>
             <tr>
-              <td width="50%"><button type="button" class="btn btn-primary" id="btnConsultar">Agua potable</button></td>
+              <td width="50%"><button type="button" class="btn btn-primary" id="btnPagoAgua">Agua potable</button></td>
               <td width="50%"><button type="button" class="btn btn-primary" id="btnPagar">Telefonía</button></td>
             </tr>
             <tr>
@@ -71,6 +71,11 @@
 
         document.getElementById("btnPagoInternet").addEventListener("click", function () {
           window.location.href = "servicios/pagoInternet.html"; //redirige a la página de depósito
+          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+        });
+
+        document.getElementById("btnPagoAgua").addEventListener("click", function () {
+          window.location.href = "servicios/pagoAgua.html"; //redirige a la página de depósito
           //código de JavaScript a ejecutar cuando se abra la página web seleccionada
         });
 
