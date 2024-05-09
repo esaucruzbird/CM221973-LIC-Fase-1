@@ -4,6 +4,8 @@ function realizarRetiro() {
 
   // Validar la cantidad a depositar
   if (!validarCantidadRetirar(cantidadRetirar)) {
+    //Limpiando el campo por si coloca un valor incorrecto, como negativo
+    document.getElementById('cantidadRetirar').value = '';
     return;
   }
 

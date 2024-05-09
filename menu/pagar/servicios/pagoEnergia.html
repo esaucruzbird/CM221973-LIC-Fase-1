@@ -7,6 +7,7 @@
     <link href="../../css/autoria/estiloPago.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
   </head>
   <body>
     <div class="container-fluid">
@@ -21,7 +22,7 @@
       <br><br><br>
       <div class="container">
         <center>
-            <input type="text" id="npeEnergia" name="npeEnergia" maxlength="24" placeholder="____ ____ ____ ____ ____ ____"/>
+            <input type="text" id="npeEnergia" name="npeEnergia" maxlength="24" minlength="24" placeholder="____ ____ ____ ____ ____ ____"/>
             <input type="number" id="pagoEnergia" name="pagoEnergia" placeholder="Monto" min="1"/>
             <button class="btn btn-primary" onclick="realizarPagoEnergia()">Pagar</button>
         </center>

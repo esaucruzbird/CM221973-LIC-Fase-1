@@ -4,6 +4,8 @@ function realizarDeposito() {
 
   // Validar la cantidad a depositar
   if (!validarCantidadDepositar(cantidadDepositar)) {
+    //Limpiando el campo por si coloca un valor incorrecto, como negativo
+    document.getElementById('cantidadDepositar').value = '';
     return;
   }
 
