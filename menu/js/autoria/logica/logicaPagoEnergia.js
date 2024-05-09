@@ -72,7 +72,6 @@
   });
   //FIN lógica de mascara de NPE
 
-
   //PARA QUE ESTÉ EN EL ENCABEZADO DESDE QUE SE CARGA LA PÁGINA
   // Obtener el saldo actual del localStorage
   var saldoActual = parseFloat(localStorage.getItem("saldo"));
