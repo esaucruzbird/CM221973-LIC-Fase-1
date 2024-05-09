@@ -74,7 +74,8 @@ document.getElementById('btnCerrar').addEventListener('click', function () {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, salir',
-      cancelButtonText: 'No, quedarse'
+      cancelButtonText: 'No, quedarse',
+      backdrop: false
   }).then((result) => {
       if (result.isConfirmed) {
           // Si el usuario elige "Sí, salir", redirigirlo a la página index para loguearse de nuevo
