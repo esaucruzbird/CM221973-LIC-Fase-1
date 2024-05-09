@@ -4,7 +4,7 @@ function realizarPagoInternet() {
   var npeInternet = document.getElementById('npeInternet').value;
 
   // Validar la cantidad a depositar
-  if (!validarPagoEnergia(pagoInternet) || !validarNpeEnergia(npeInternet)) {
+  if (!validarPagoInternet(pagoInternet) || !validarNpeInternet(npeInternet)) {
     //Limpiando el campo por si coloca un valor incorrecto, como negativo o menos caracteres en NPE
     document.getElementById('pagoInternet').value = '';
     document.getElementById('npeInternet').value = '';
@@ -106,9 +106,9 @@ document.getElementById('btnCerrar').addEventListener('click', function () {
 });
 
 /*
-        document.getElementById('btnCerrar').addEventListener('click', function () {
-          window.location.href = '../../../index.html'; //redirige a la página de depósito
-          //código de JavaScript a ejecutar cuando se abra la página web seleccionada
-        });
-        */
+    document.getElementById('btnCerrar').addEventListener('click', function () {
+    window.location.href = '../../../index.html'; //redirige a la página de depósito
+    //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+    });
+*/
 //FIN Lógica para llamamiento de los botones
