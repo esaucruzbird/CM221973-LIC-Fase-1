@@ -1,19 +1,19 @@
-//INICIO función realizarPagoAgua
-function realizarPagoAgua() {
-    var pagoAgua = document.getElementById('pagoAgua').value;
-    var npeAgua = document.getElementById('npeAgua').value;
+//INICIO función realizarPagoTelefono
+function realizarPagoTelefono() {
+    var pagoTelefono = document.getElementById('pagoTelefono').value;
+    var npeTelefono = document.getElementById('npeTelefono').value;
   
     // Validar la cantidad a depositar
-    if (!validarPagoAgua(pagoAgua) || !validarNpeAgua(npeAgua)) {
+    if (!validarPagoTelefono(pagoTelefono) || !validarNpeTelefono(npeTelefono)) {
       //Limpiando el campo por si coloca un valor incorrecto, como negativo o menos caracteres en NPE
-      document.getElementById('pagoAgua').value = '';
-      document.getElementById('npeAgua').value = '';
+      document.getElementById('pagoTelefono').value = '';
+      document.getElementById('npeTelefono').value = '';
       return;
     }
   
     // Aquí continúa la lógica para página pagoEnergia
-    // Obtener la cantidad a pagar desde el input
-  var cantidad = parseFloat(document.getElementById('pagoAgua').value);
+  // Obtener la cantidad a pagar desde el input
+  var cantidad = parseFloat(document.getElementById('pagoTelefono').value);
   // Validar que la cantidad sea un número válido
   if (isNaN(cantidad) || cantidad <= 0) {
     alert('Por favor ingresa una cantidad válida.'); //alerta que se lanza si en el campo está vacio, cero o negativo
@@ -28,7 +28,7 @@ function realizarPagoAgua() {
   alert('Se ha pagado $' + cantidad + ' . Nuevo saldo: $' + nuevoSaldo + ' .');
   //Almacenando transacción en el historial
   var nuevaTransaccion = {
-    concepto: 'Pago energía NPE ' + document.getElementById('npeAgua').value,
+    concepto: 'Pago energía NPE ' + document.getElementById('npeTelefono').value,
     fecha: obtenerFechaActual(), // Función para obtener la fecha actual
     valor: cantidad,
   };
@@ -42,10 +42,10 @@ function realizarPagoAgua() {
   //asignación del saldo al encabezado
   document.getElementById('saldo-encabezado').innerHTML = 'El N° cuenta es 0987654321, el saldo actual es $ ' + saldoActual;
   // Borrando contenido de la transacción anterior en los input
-  document.getElementById('npeAgua').value = '';
-  document.getElementById('pagoAgua').value = '';
+  document.getElementById('npeTelefono').value = '';
+  document.getElementById('pagoTelefono').value = '';
 }
-//FIN función realizarPagoAgua
+//FIN función realizarPagoTelefono
 
 function obtenerFechaActual() {
   var fecha = new Date();
@@ -58,7 +58,7 @@ function obtenerFechaActual() {
 
 //INICIO lógica de mascara de NPE
 //obtener el elemento de entrada
-var input = document.getElementById('npeAgua');
+var input = document.getElementById('npeTelefono');
 //agregar un evento input para aplicar la máscara
 input.addEventListener('input', function () {
   //obtener el valor actual del input
