@@ -48,7 +48,30 @@ document.getElementById('btnGrafico').addEventListener('click', function () {
 });
 
 document.getElementById('btnCerrar').addEventListener('click', function () {
+  // Mostrar ventana emergente de Sweet Alert
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: '¿Deseas salir del sitio?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, salir',
+    cancelButtonText: 'No, quedarse',
+    backdrop: false,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Si el usuario elige "Sí, salir", redirigirlo a la página index para loguearse de nuevo
+      window.location.href = '../index.html'; //redirige a la página de logueo
+      //código de JavaScript a ejecutar cuando se abra la página web seleccionada
+    }
+  });
+});
+
+/*
+document.getElementById('btnCerrar').addEventListener('click', function () {
   window.location.href = '../index.html'; //redirige a la página de depósito
   //código de JavaScript a ejecutar cuando se abra la página web seleccionada
 });
+*/
 //FIN Lógica para llamamiento de los botones
