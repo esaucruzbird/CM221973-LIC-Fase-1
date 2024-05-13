@@ -20,7 +20,14 @@ function validarCantidadDepositar(cantidadDepositar) {
   
     var errors = validate({ cantidadDepositar: cantidadDepositar }, constraints);
     if (errors) {
-      alert(errors.cantidadDepositar[0]);
+      // Mostrar el mensaje de error del campo validado
+      Swal.fire({
+        title: 'Error de Validación',
+        text: errors.cantidadDepositar[0],
+        // indica la posición (0) del mensaje que se debe mostrar, al romoperse alguna de las 2 reglas que tiene el campo. Como solo se puede romper 1 a la vez. Siempre se debe llamar a la posición 0 de la matriz error contrasena
+        icon: 'error',
+        backdrop: false
+    });
       return false;
     }
     return true;

@@ -14,7 +14,15 @@ function realizarDeposito() {
   var cantidad = parseFloat(document.getElementById('cantidadDepositar').value);
   // Validar que la cantidad sea un número válido
   if (isNaN(cantidad) || cantidad <= 0) {
-    alert('Por favor ingresa una cantidad válida.'); //alerta que se lanza si en el campo está vacio, cero o negativo
+    //alerta que se lanza si en el campo está vacio, cero o negativo
+    // Mostrar el mensaje de error del campo validado
+    Swal.fire({
+      title: 'Por favor ingresa una cantidad válida.',
+      text: errors.cantidadDepositar[0],
+      // indica la posición (0) del mensaje que se debe mostrar, al romoperse alguna de las 2 reglas que tiene el campo. Como solo se puede romper 1 a la vez. Siempre se debe llamar a la posición 0 de la matriz error contrasena
+      icon: 'error',
+      backdrop: false
+  }); 
     return;
   }
   // Obtener el saldo actual del localStorage y sumarle la cantidad a depositar
@@ -23,7 +31,15 @@ function realizarDeposito() {
   // Actualizar el saldo en el localStorage
   localStorage.setItem('saldo', nuevoSaldo.toString());
   // Mostrar un mensaje de confirmación
-  alert('Se ha depositado $' + cantidad + ' . Nuevo saldo: $' + nuevoSaldo + ' .');
+  // Mostrar el mensaje de error del campo validado
+  Swal.fire({
+    title: 'Éxito',
+    text: 'Se ha depositado $' + cantidad + ' . Nuevo saldo: $' + nuevoSaldo + ' .',
+    // indica la posición (0) del mensaje que se debe mostrar, al romoperse alguna de las 2 reglas que tiene el campo. Como solo se puede romper 1 a la vez. Siempre se debe llamar a la posición 0 de la matriz error contrasena
+    icon: 'success',
+    backdrop: false
+}); 
+  //alert('Se ha depositado $' + cantidad + ' . Nuevo saldo: $' + nuevoSaldo + ' .');
   document.getElementById('cantidadDepositar').value = '';
   //Almacenando transacción en el historial
   var nuevaTransaccion = {
