@@ -1,22 +1,30 @@
 //INICIO función realizarPagoAgua
 function realizarPagoAgua() {
-    var pagoAgua = document.getElementById('pagoAgua').value;
-    var npeAgua = document.getElementById('npeAgua').value;
-  
-    // Validar la cantidad a depositar
-    if (!validarPagoAgua(pagoAgua) || !validarNpeAgua(npeAgua)) {
-      //Limpiando el campo por si coloca un valor incorrecto, como negativo o menos caracteres en NPE
-      document.getElementById('pagoAgua').value = '';
-      document.getElementById('npeAgua').value = '';
-      return;
-    }
-  
-    // Aquí continúa la lógica para página pagoEnergia
-    // Obtener la cantidad a pagar desde el input
+  var pagoAgua = document.getElementById('pagoAgua').value;
+  var npeAgua = document.getElementById('npeAgua').value;
+
+  // Validar la cantidad a depositar
+  if (!validarPagoAgua(pagoAgua) || !validarNpeAgua(npeAgua)) {
+    //Limpiando el campo por si coloca un valor incorrecto, como negativo o menos caracteres en NPE
+    document.getElementById('pagoAgua').value = '';
+    document.getElementById('npeAgua').value = '';
+    return;
+  }
+
+  // Aquí continúa la lógica para página pagoAgua
+  // Obtener la cantidad a pagar desde el input
   var cantidad = parseFloat(document.getElementById('pagoAgua').value);
   // Validar que la cantidad sea un número válido
   if (isNaN(cantidad) || cantidad <= 0) {
-    alert('Por favor ingresa una cantidad válida.'); //alerta que se lanza si en el campo está vacio, cero o negativo
+    //alerta que se lanza si en el campo está vacio, cero o negativo
+    // Mostrar el mensaje de error del campo validado
+    Swal.fire({
+      title: 'Por favor ingresa una cantidad válida.',
+      text: errors.pagoAgua[0],
+      // indica la posición (0) del mensaje que se debe mostrar, al romoperse alguna de las 2 reglas que tiene el campo. Como solo se puede romper 1 a la vez. Siempre se debe llamar a la posición 0 de la matriz error contrasena
+      icon: 'error',
+      backdrop: false,
+    });
     return;
   }
   // Obtener el saldo actual del localStorage y restarle la cantidad a pagar
@@ -25,7 +33,15 @@ function realizarPagoAgua() {
   // Actualizar el saldo en el localStorage
   localStorage.setItem('saldo', nuevoSaldo.toString());
   // Mostrar un mensaje de confirmación
-  alert('Se ha pagado $' + cantidad + ' . Nuevo saldo: $' + nuevoSaldo + ' .');
+  // Mostrar el mensaje de error del campo validado
+  Swal.fire({
+    title: 'Éxito',
+    text: 'Se ha pagado $' + cantidad + ' . Nuevo saldo: $' + nuevoSaldo + ' .',
+    // indica la posición (0) del mensaje que se debe mostrar, al romoperse alguna de las 2 reglas que tiene el campo. Como solo se puede romper 1 a la vez. Siempre se debe llamar a la posición 0 de la matriz error contrasena
+    icon: 'success',
+    backdrop: false,
+  });
+  //alert('Se ha pagado $' + cantidad + ' . Nuevo saldo: $' + nuevoSaldo + ' .');
   //Almacenando transacción en el historial
   var nuevaTransaccion = {
     concepto: 'Pago energía NPE ' + document.getElementById('npeAgua').value,

@@ -11,7 +11,7 @@ function realizarPagoInternet() {
     return;
   }
 
-  // Aquí continúa la lógica para página pagoEnergia
+  // Aquí continúa la lógica para página pagoInternet
   // Obtener la cantidad a pagar desde el input
   var cantidad = parseFloat(document.getElementById('pagoInternet').value);
   // Validar que la cantidad sea un número válido
@@ -20,7 +20,7 @@ function realizarPagoInternet() {
     // Mostrar el mensaje de error del campo validado
     Swal.fire({
       title: 'Por favor ingresa una cantidad válida.',
-      text: errors.pagoEnergia[0],
+      text: errors.pagoInternet[0],
       // indica la posición (0) del mensaje que se debe mostrar, al romoperse alguna de las 2 reglas que tiene el campo. Como solo se puede romper 1 a la vez. Siempre se debe llamar a la posición 0 de la matriz error contrasena
       icon: 'error',
       backdrop: false,
