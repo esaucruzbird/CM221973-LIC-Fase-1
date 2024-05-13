@@ -26,7 +26,13 @@ document.getElementById("frm").addEventListener("submit", function(event) {
     var errors = validate(document.getElementById("frm"), constraints);
     if (errors) {
         event.preventDefault();
-        alert(errors.contrasena[0]);
-        // indica la posición (0) del mensaje que se debe mostrar, al romoperse alguna de las 2 reglas que tiene el campo. Como solo se puede romper 1 a la vez. Siempre se debe llamar a la posición 0 de la matriz error contrasena
+        // Mostrar el mensaje de error del campo validado
+        Swal.fire({
+            title: 'Error de Validación',
+            text: errors.contrasena[0],
+            // indica la posición (0) del mensaje que se debe mostrar, al romoperse alguna de las 2 reglas que tiene el campo. Como solo se puede romper 1 a la vez. Siempre se debe llamar a la posición 0 de la matriz error contrasena
+            icon: 'error',
+            backdrop: false
+        });
     }
 });
