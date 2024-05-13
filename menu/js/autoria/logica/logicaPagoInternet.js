@@ -44,7 +44,7 @@ function realizarPagoInternet() {
   //alert('Se ha pagado $' + cantidad + ' . Nuevo saldo: $' + nuevoSaldo + ' .');
   //Almacenando transacción en el historial
   var nuevaTransaccion = {
-    concepto: 'Pago energía NPE ' + document.getElementById('npeInternet').value,
+    concepto: 'Pago internet NPE ' + document.getElementById('npeInternet').value,
     fecha: obtenerFechaActual(), // Función para obtener la fecha actual
     valor: cantidad,
   };
