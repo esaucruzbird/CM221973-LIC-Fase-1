@@ -38,6 +38,7 @@ function realizarPagoEnergia() {
       backdrop: false,
     });
     // limpiando input para que vuelva a intentarlo el usuario
+    document.getElementById('npeEnergia').value = '';
     document.getElementById('pagoEnergia').value = '';
     return;
   }

@@ -38,6 +38,7 @@ function realizarPagoAgua() {
       backdrop: false,
     });
     // limpiando input para que vuelva a intentarlo el usuario
+    document.getElementById('npeAgua').value = '';
     document.getElementById('pagoAgua').value = '';
     return;
   }

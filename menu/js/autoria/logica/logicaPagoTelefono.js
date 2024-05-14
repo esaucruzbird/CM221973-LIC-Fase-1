@@ -38,6 +38,7 @@ function realizarPagoTelefono() {
       backdrop: false,
     });
     // limpiando input para que vuelva a intentarlo el usuario
+    document.getElementById('npeTelefono').value = '';
     document.getElementById('pagoTelefono').value = '';
     return;
   }

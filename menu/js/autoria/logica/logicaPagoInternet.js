@@ -38,6 +38,7 @@ function realizarPagoInternet() {
       backdrop: false,
     });
     // limpiando input para que vuelva a intentarlo el usuario
+    document.getElementById('npeInternet').value = '';
     document.getElementById('pagoInternet').value = '';
     return;
   }
