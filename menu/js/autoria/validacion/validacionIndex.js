@@ -35,4 +35,5 @@ document.getElementById("frm").addEventListener("submit", function(event) {
             backdrop: false
         });
     }
+    document.getElementById('contrasena').value = '';
 });
