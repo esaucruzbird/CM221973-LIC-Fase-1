@@ -10,7 +10,8 @@ function realizarDeposito() {
   }
 
   // Aquí continúa la lógica para página depósito
-  // Obtener la cantidad a depositar desde el input
+  // Obtener el saldo actual del localStorage, para validarlo y poder sumarle la cantidad a depositar
+  var saldoActual = parseFloat(localStorage.getItem('saldo'));
   var cantidad = parseFloat(document.getElementById('cantidadDepositar').value);
   // Validar que la cantidad sea un número válido
   if (isNaN(cantidad) || cantidad <= 0) {
@@ -25,8 +26,7 @@ function realizarDeposito() {
     });
     return;
   }
-  // Obtener el saldo actual del localStorage y sumarle la cantidad a depositar
-  var saldoActual = parseFloat(localStorage.getItem('saldo'));
+  
   var nuevoSaldo = saldoActual + cantidad;
   // Actualizar el saldo en el localStorage
   localStorage.setItem('saldo', nuevoSaldo.toString());
@@ -89,7 +89,7 @@ function generarPDFDeposito(cantidadDepositar, saldoActual, nuevoSaldo) {
 
   // Definir el contenido del PDF
   var contenido = `
-      ¡¡¡ Pokemon Bank !!!
+      ¡¡¡ Éxito !!!
       Transacción: Depósito
       Valor: $${cantidadDepositar}
       Saldo anterior de la cuenta: $${saldoActual}
