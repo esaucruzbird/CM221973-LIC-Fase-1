@@ -2,7 +2,7 @@
 function realizarRetiro() {
   var cantidadRetirar = document.getElementById('cantidadRetirar').value;
 
-  // Validar la cantidad a depositar
+  // Validar la cantidad a retirar
   if (!validarCantidadRetirar(cantidadRetirar)) {
     //Limpiando el campo por si coloca un valor incorrecto, como negativo
     document.getElementById('cantidadRetirar').value = '';
@@ -10,6 +10,8 @@ function realizarRetiro() {
   }
 
   // Aquí continúa la lógica para página depósito
+  // Obtener el saldo actual del localStorage, para validarlo y poder restarle la cantidad a retirar
+  var saldoActual = parseFloat(localStorage.getItem('saldo'));
   // Obtener la cantidad a retirar desde el input
   var cantidad = parseFloat(document.getElementById('cantidadRetirar').value);
   // Validar que la cantidad sea un número válido
@@ -25,8 +27,21 @@ function realizarRetiro() {
     });
     return;
   }
-  // Obtener el saldo actual del localStorage y restarle la cantidad a retirar
-  var saldoActual = parseFloat(localStorage.getItem('saldo'));
+
+  // Verificar si la cantidad a retirar es mayor que el saldo disponible
+  if (cantidad > saldoActual) {
+    Swal.fire({
+      title: 'Saldo insuficiente',
+      text: 'No tienes suficiente saldo en tu cuenta bancaria para realizar este retiro.',
+      icon: 'error',
+      backdrop: false,
+    });
+    // limpiando input para que vuelva a intentarlo el usuario
+    document.getElementById('cantidadRetirar').value = '';
+    return;
+  }
+
+  // Al saldo actual del localStorage se le resta la cantidad a retirar
   var nuevoSaldo = saldoActual - cantidad;
   // Actualizar el saldo en el localStorage
   localStorage.setItem('saldo', nuevoSaldo.toString());
