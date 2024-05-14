@@ -38,7 +38,7 @@ function realizarPagoAgua() {
       backdrop: false,
     });
     // limpiando input para que vuelva a intentarlo el usuario
-    document.getElementById('pagoEnergia').value = '';
+    document.getElementById('pagoAgua').value = '';
     return;
   }
 
