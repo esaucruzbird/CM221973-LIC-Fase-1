@@ -35,5 +35,6 @@ document.getElementById("frm").addEventListener("submit", function(event) {
             backdrop: false
         });
     }
+    //borrando contenido del input, cuando haya un error de validacion
     document.getElementById('contrasena').value = '';
 });
