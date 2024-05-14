@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
   </head>
   <body>
     <div class="container-fluid">
@@ -25,6 +27,9 @@
         <center>
         <input type="number" id="cantidadDepositar" name="cantidadDepositar" min="1"/>
         <button class="btn btn-primary" onclick="realizarDeposito()">Depositar</button>
+        <!--
+        <button id="btnGenerarPDFDeposito" onclick="realizarDeposito()" disabled>Generar PDF</button>
+        -->
         </center>
         <!--div contenedor donde se insertará la tabla de transacciones generada dinámicamente con el JS -->
         <!--buscará este elemento en el DOM y lo actualizará con la tabla de transacciones generada por el JS.-->
